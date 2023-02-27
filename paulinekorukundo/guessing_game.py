@@ -17,19 +17,6 @@ import random
 
 number = random.randint(1,99)
 myGuess = int(input('Guess the number I have: '))
-'''
-while True:
-    myGuess = int(input('Guess the number I have: '))
-    if(myGuess < number):
-        print('Your guess is low')
-        #mySecondGuess = int(input('Guess the number again: '))
-    elif(myGuess > number):
-        print('Your guess is larger than the number')
-        #mySecondGuess = int(input('Guess again: '))
-    else:
-        print('Hooray!!! Your guess is correct! ')
-        break
-'''
 
 while myGuess != number: # the while loop will run as long as the guess and the number are not equal
     if(myGuess < number):   # checking whether the guess is lower than the number
