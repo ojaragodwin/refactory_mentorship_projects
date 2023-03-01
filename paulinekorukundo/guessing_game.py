@@ -20,7 +20,7 @@ and the game ends
 import random
 
 
-number = random.randint(1, 99)
+number = random.randint(1, 99) # generate a random number between 1 and 99
 myGuess = int(input('Guess the number I have. Psss, its between 1 and 99: '))
 
 # the while loop will run as long as the guess and the number are not equal
