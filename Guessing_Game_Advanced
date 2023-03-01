@@ -11,7 +11,7 @@ def get_range():
 def get_max_guesses():
     return int(input("Enter the maximum number of guesses allowed: "))
 
-# Function to generate the number within the specified range
+# Function to generate the number within the given specified range
 def generate_number(min_num, max_num):
     return random.randint(min_num, max_num)
 
