@@ -4,7 +4,7 @@ import random
 number = random.randint(1, 99)
 
 # Set the maximum number of guesses allowed
-max_guesses = 5
+max_guesses = 10
 
 # Keep track of the number of guesses
 num_guesses = 0
