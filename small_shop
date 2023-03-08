@@ -1,0 +1,115 @@
+
+#   Firstly, we define a dictionary called products. This dictionary contains the available products and their prices.
+#   The keys of the dictionary are the product names, and the values are the prices.
+
+products = {
+    'apple': 7500,
+    'banana': 6000,
+    'orange': 9000,
+    'grape': 12500,
+    'watermelon': 3500
+}
+#   We then define 2 functions (display_products & buy_products).
+#   The display_function below shows the available products and their prices to the user. 
+
+def display_products():
+    print('Available products:')
+    for product, price in products.items():
+
+#   We use a for loop to iterate through the keys and values of the products dictionary, and print them to the terminal using the print() function. 
+#   The f-string syntax below is used to format the output string with the product name and price.
+
+        print(f'{product}: ${price:.2f}')
+
+#   Next we define the buy_product function below which allows:
+#   The user to select products to buy;
+#   Keeps track of the total cost of the items in the user's cart;
+#   Prompts the user to enter a payment amount;
+#   Prints a receipt to the terminal.
+
+def buy_products():
+    cart = []
+    total_cost = 0
+
+#   First, we initialize an empty list called cart to store the items the user has selected to buy, and set the total_cost variable to 0 to keep track of the total cost of the items in the cart.
+
+#   We then use a while loop to prompt the user to enter the product name they want to buy. 
+
+    while True:
+        display_products()
+        product = input('Enter product name (or "done" to checkout): ')
+        if product == 'done':
+
+#   If the user enters "done", the loop is exited and the user is taken to the payment stage
+
+            break
+        elif product not in products:
+            print('Invalid product name')
+
+#   If the user enters an invalid product name, we display an error message and continue the loop
+
+            continue
+        quantity = input(f'Enter quantity for {product}: ')
+        try:
+            quantity = int(quantity)
+        except ValueError:
+            print('Invalid quantity')
+
+#   If the user enters an invalid quantity, we display an error message and continue the loop.
+
+            continue
+
+#   If the user enters a valid quantity, we calculate the cost of the items by multiplying the product price by the quantity, add the item to the cart list as a dictionary containing the product name, quantity, and cost, and update the total_cost variable.
+        
+        cost = quantity * products[product]
+        cart.append({'product': product, 'quantity': quantity, 'cost': cost})
+        total_cost += cost
+        print(f'{product} added to cart (cost: ${cost:.2f})')
+
+#   Once the user has finished selecting items to buy, we use another while loop to prompt the user to enter the payment amount.  
+      
+    while True:
+        payment = input(f'Total cost: ${total_cost:.2f}. Enter payment amount: ')
+        try:
+            payment = float(payment)
+        except ValueError:
+            print('Invalid payment amount')
+
+#   If the user enters an invalid payment amount, we display an error message and continue the loop
+
+            continue
+        if payment < total_cost:
+            print('Payment amount is less than total cost')
+
+#   If the user enters an invalid payment amount, we display an error message and continue the loop
+#   If the user enters a valid payment amount that is less than the total cost, we display an error message and continue the loop
+
+            continue
+
+#   If the user enters a valid payment amount that is equal to or greater than the total cost, we break out of the loop and calculate the change owed to the user.
+
+
+        break
+    change = payment - total_cost
+    print(f'Change: ${change:.2f}')
+    print('Receipt:')
+
+#   We print the receipt to the terminal using the print() function.
+
+#   We iterate through the items in the cart list and print the quantity, product name, and cost for each item. 
+
+    for item in cart:
+        print(f'{item["quantity"]} {item["product"]}(s) - ${item["cost"]:.2f}')
+
+#   #   We then print the total cost, payment amount, and change owed to the user.
+
+    print(f'Total cost: ${total_cost:.2f}')
+    print(f'Payment: ${payment:.2f}')
+    print(f'Change: ${change:.2f}')
+
+buy_products()
+
+#   e call the buy_products() function to start the program. 
+#   When the user runs the script, they will see a list of available products and their prices.
+#   They will also be able to select items to buy, enter a payment amount, and view a receipt.
+
