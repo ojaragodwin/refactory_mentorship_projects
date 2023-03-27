@@ -32,9 +32,9 @@ def login_user():
 # create a function to display the list of available products and their prices
 def display_products():
     print("Here are the available products and their prices:")
-    print("Product Name\tProduct Price")
+    print("Product Name"+"   "+"Product Price")
     for product, price in products.items():
-        print(f"{product}\t ${price:.2f}")
+        print(f"{product}           ${price}")
 
 # create a function to calculate the total price of the items purchased
 def calculate_total(items):
@@ -51,7 +51,7 @@ def print_receipt(items):
     print("====================================================")
     print("Product Name\tProduct Price")
     for item in items:
-        print(f"{item}\t${products[item]:.2f}")
+        print(f"{item}\t\t{products[item]:.2f}")
     print("====================================================")
     total = calculate_total(items)
     print(f"\t\t\tTotal\n\t\t\t${total:.2f}")
