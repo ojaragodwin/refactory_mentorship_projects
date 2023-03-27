@@ -19,25 +19,26 @@ and the game ends
 
 import random
 
+play_again = 'yes'
 
-number = random.randint(1, 99) # generate a random number between 1 and 99
-myGuess = int(input('Guess the number I have. Psss, its between 1 and 99: '))
+while play_again.lower() == 'yes':
+    number = random.randint(1, 99)
+    guess_count = 0
+    while guess_count < 6:
+        myGuess = int(input('Guess the number I have. Psss, its between 1 and 99: '))
+        guess_count += 1
+        if myGuess < number:
+            print('Your guess is low')
+        elif myGuess > number:
+            print('Your guess is larger than the number')
+        else:
+            print('Hooray!!! Your guess is correct! ')
+            print('You made', guess_count, 'guess(es)')
+            break
 
-# the while loop will run as long as the guess and the number are not equal
-while myGuess != number:
-    # checking whether the guess is lower than the number
-    if (myGuess < number):
-        # letting the user know the guessed number is smaller than the number
-        print('Your guess is low')
-        # this is the case where (myGuess > number)
-    else:
-        # letting the user know the guessed number is bigger than the number
-        print('Your guess is larger than the number')
-        # myGuess is assigned to the new Guess from the user
-    myGuess = int(input('Guess again: '))
+    if guess_count == 6:
+        print('Sorry, you did not guess the number. The number was', number)
 
-# the code reaches here when the guess and number are equal.
-print('Hooray!!! Your guess is correct! ')
+    play_again = input('Do you want to play again? (yes/no): ')
 
-# Let the user know the guess is correct and end the game
 print('---------------Guessing Game has ended---------------')
