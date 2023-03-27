@@ -63,11 +63,11 @@ def print_receipt(items):
 def shop():
     # ask the user to log in or register
     while True:
-        choice = input("Do you have an account? (y/n): ")
-        if choice == "y":
+        choice = input("Do you have an account? (yes/no): ")
+        if choice == "yes":
             login_user()
             break
-        elif choice == "n":
+        elif choice == "no":
             register_user()
             break
         else:
