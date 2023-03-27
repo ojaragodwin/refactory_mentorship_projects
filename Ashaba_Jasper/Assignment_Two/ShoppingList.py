@@ -2,9 +2,9 @@ import pandas as pd
 
 # create a dictionary of products and their prices
 products = {
-    "Books":     49.95,
+    "Books"   :  49.95,
     "Computer":  579.99,
-    "Monitor": 1 24.89
+    "Monitor" :  124.89
  }
 
 # create a function to get user input for login or registration
@@ -34,7 +34,7 @@ def display_products():
     print("Here are the available products and their prices:")
     print("Product Name\tProduct Price")
     for product, price in products.items():
-        print(f"{product}\t${price:.2f}")
+        print(f"{product}\t ${price:.2f}")
 
 # create a function to calculate the total price of the items purchased
 def calculate_total(items):
