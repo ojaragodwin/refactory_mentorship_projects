@@ -1,5 +1,6 @@
 import pandas as pd
 
+#Start of the code
 # create a dictionary of products and their prices
 products = {
     "Books"   :  49.95,
