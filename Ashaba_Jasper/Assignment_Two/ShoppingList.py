@@ -1,10 +1,22 @@
+"""2. printing receipts after shopping
+Create a small shop with some products and prices where a buyer can view the list of a vailable products and their prices.
+when program runs, it should prompt buyer to create account using password and email and store this in an excel sheet.
+Then ask user for login if he has registered account else register
+The products shoulf be fetched from an excel sheet called products.
+Buyer can choose what to buy.
+Buyer can pay for what they have have bought
+Then print a reciept for the buyer. Simple receipt example image This receipt should printed on terminal, dont bother about pdf printing for now
+NB. This simulates the real world ecommerce situation, consider all possible human errors and catch them e.g buyer puts a price less that the total of items he has bought, buyer putting wrong. Use functions to break down your work into small codes. You can use modules and import them as well."""
+
+
 import pandas as pd
 
 # create a dictionary of products and their prices
 products = {
     "Books"   :  49.95,
     "Computer":  579.99,
-    "Monitor" :  124.89
+    "Monitor" :  124.89,
+    "Pens"    :  2.96
  }
 
 # create a function to get user input for login or registration
@@ -16,13 +28,15 @@ def get_user_info():
 # create a function to register a new user and store their info in an excel sheet
 def register_user():
     email, password = get_user_info()
+    #Used pandas
     df = pd.DataFrame({"email": [email], "password": [password]})
     df.to_excel("users.xlsx", index=False)
-    print("You have successfully registered.")
+    print("You have successfully registered.") 
 
 # create a function to log in an existing user
 def login_user():
     email, password = get_user_info()
+
     df = pd.read_excel("users.xlsx")
     if (df["email"] == email).any() and (df["password"] == password).any():
         print("You have successfully logged in.")
@@ -37,11 +51,14 @@ def display_products():
         print(f"{product}           ${price}")
 
 # create a function to calculate the total price of the items purchased
+#def calculate_total(items):
+    #total = 0
+    #for item in items:
+        #total += products[item]
+    #return total
+
 def calculate_total(items):
-    total = 0
-    for item in items:
-        total += products[item]
-    return total
+    return sum([products[item] for item in items])
 
 # create a function to print the receipt
 def print_receipt(items):
