@@ -58,7 +58,7 @@ def display_products():
     #return total
 
 def calculate_total(items):
-    return sum([products[item] for item in items])
+    return sum([products[item] for item in items if products[item]>0])
 
 # create a function to print the receipt
 def print_receipt(items):
