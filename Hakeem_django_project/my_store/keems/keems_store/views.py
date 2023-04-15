@@ -13,19 +13,22 @@ def index(requests):
     products = product_filters.qs
     return render(requests,'index.html',{'products': products,'product_filters': product_filters})
 
-@login_required
-def home(requests):
-    return render(requests,'home')
+
+def about_us(requests):
+    return render(requests,'about_us.html')
 
 @login_required
 def LoginView(requests):
     return render(requests,'login.html')
 
 def home(requests):
-    return render(requests,'base.html')
+    return render(requests,'home.html')
 
 def LogoutView(requests):
     return render(requests,'logout.html')
+
+def SignUp(requests):
+    return render(requests,'main.html')
 
 #creating a view for product_detail
 @login_required
@@ -60,6 +63,12 @@ def issue_item(requests,pk):
 def receipt(requests):
     sales = Sale.objects.all().order_by('-id')
     return render(requests, 'receipt.html', {'sales':sales})
+#receipt details
+@login_required
+def receipt_detail(requests, receipt_id):
+    receipt = Sale.objects.get(id = receipt_id)
+    return render(requests, 'receipt_detail.html',{'receipt':receipt})
+              
                                                                 
                                 
 

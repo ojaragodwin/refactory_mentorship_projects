@@ -48,3 +48,4 @@ class Sale(models.Model):
         pass
     def __str__(self):
         return self.item.item_name
+    

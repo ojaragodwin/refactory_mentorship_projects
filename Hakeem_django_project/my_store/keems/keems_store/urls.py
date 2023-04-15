@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('index/',views.index, name = 'index'),
     path('home/',views.home, name = 'home'),
+    path('about/',views.about_us, name = 'about_us'),
     path('', auth_views.LoginView.as_view(template_name = 'login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'logout.html'), name='logout'),
     #this route is for buying items
@@ -14,4 +15,5 @@ urlpatterns = [
     path('add_to_stock/<str:pk>', views.add_to_stock, name= 'add_to_stock'),
     #handling the receipt after a successful sale
     path('receipt/',views.receipt, name='receipt'),
+    path('receipt/<int:receipt_id>',views.receipt_detail,name= 'receipt_detail'),
 ]
